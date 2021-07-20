@@ -3,11 +3,21 @@
   <mat-form-field appearance="fill">
     <mat-icon matSuffix>{{arrowState}}</mat-icon>
     <mat-select [formControl]="selectDropdown">
+      <mat-select-trigger>
+       {{selectDropdown.value}}
+      </mat-select-trigger>
       <mat-option *ngFor="let item of itemList" [value]="item.name">
-          <ng-container *ngIf="isSelected(item.name)">
-            <mat-icon >done</mat-icon>
-          </ng-container>
+
+        <ng-container *ngIf="isSelected(item.name); else notSelected">
+          <mat-icon>done</mat-icon>
           {{item.name}}
+        </ng-container>
+
+        <ng-template #notSelected >
+          {{item.name}}
+        </ng-template>
+
+
       </mat-option>
       <div class="select-methods-container">
         <hr>
