@@ -1,0 +1,19 @@
+<h2>mat-select</h2>
+<div class="select-container">
+  <mat-form-field appearance="fill">
+    <mat-icon matSuffix>{{arrowState}}</mat-icon>
+    <mat-select [formControl]="selectDropdown">
+      <mat-option *ngFor="let item of itemList" [value]="item.name">
+          <ng-container *ngIf="isSelected(item.name)">
+            <mat-icon >done</mat-icon>
+          </ng-container>
+          {{item.name}}
+      </mat-option>
+      <div class="select-methods-container">
+        <hr>
+        <h1>Some Method</h1>
+        <p (click)="showAlert()">Method</p>
+      </div>
+    </mat-select>
+  </mat-form-field>
+</div>
